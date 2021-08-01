@@ -3,7 +3,16 @@ import Entry from "./Entry"
 import TableHeader from "./TableHeader";
 
 class EntryTable extends Component {
+    are_props_valid() {
+        return (this.props.accounts != null && this.props.accounts.length !== 0 && this.props.entries != null && this.props.entries.length !== 0)
+    }
+
     render() {
+        if (!this.are_props_valid()) {
+            return (
+                <p>Loading info, please wait...</p>
+            )
+        }
         return (
             <table>
                 <thead>
