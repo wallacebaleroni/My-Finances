@@ -14,9 +14,9 @@ class Entry extends Component {
                 <td>{ this.props.entry['description'] }</td>
                 {this.props.accounts.map(account => {
                     if (account['id'] === this.props.entry['account']) {
-                        return (<td>{this._getFormattedValue(this.props.entry['value'])}</td>)
+                        return (<td key={this.props.entry['entry_id'] + account['id']}>{this._getFormattedValue(this.props.entry['value'])}</td>)
                     } else {
-                        return (<td></td>)
+                        return (<td key={this.props.entry['entry_id'] + account['id']}></td>)
                     }
                 })}
             </tr>

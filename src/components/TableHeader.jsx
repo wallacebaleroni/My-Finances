@@ -9,7 +9,7 @@ class TableHeader extends Component {
                 <th>Description</th>
                 {this.props.accounts.map(account => {
                     return (
-                        <th>{account['name']}</th>
+                        <th key={account['id']}>{account['name']}</th>
                     )
                 })}
             </tr>

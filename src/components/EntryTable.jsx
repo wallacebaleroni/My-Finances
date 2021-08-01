@@ -6,12 +6,16 @@ class EntryTable extends Component {
     render() {
         return (
             <table>
-                <TableHeader accounts={this.props.accounts} />
-                {this.props.entries.map(entry => {
-                    return (
-                        <Entry accounts={this.props.accounts} entry={entry} />
-                    )
-                })}
+                <thead>
+                    <TableHeader accounts={this.props.accounts} />
+                </thead>
+                <tbody>
+                    {this.props.entries.map(entry => {
+                        return (
+                            <Entry key={entry.entry_id} accounts={this.props.accounts} entry={entry} />
+                        )
+                    })}
+                </tbody>
             </table>
         )
     }
