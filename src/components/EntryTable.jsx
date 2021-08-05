@@ -4,7 +4,7 @@ import TableHeader from "./TableHeader";
 
 class EntryTable extends Component {
     are_props_valid() {
-        return (this.props.accounts != null && this.props.accounts.length !== 0 && this.props.entries != null && this.props.entries.length !== 0)
+        return (this.props.accounts != null && this.props.entries != null)
     }
 
     render() {

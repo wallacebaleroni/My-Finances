@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import EntryForm from "./components/EntryForm"
 import EntryTable from "./components/EntryTable"
 import AccountDAO from './daos/AccountDAO';
 import EntryDAO from './daos/EntryDAO';
@@ -32,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <section className="conteudo">
+        <EntryForm accounts={this.state.accounts}/>
         <EntryTable accounts={this.state.accounts} entries={this.state.entries} />
       </section>
     );
