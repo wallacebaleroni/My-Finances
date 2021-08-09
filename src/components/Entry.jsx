@@ -3,7 +3,11 @@ import { Component } from "react";
 class Entry extends Component {
 
     _getFormattedValue(value) {
-        return "R$ " + (parseInt(value / 100)) + "," + (value % 100)
+        let integer = parseInt(value / 100)
+        let decimal = value % 100
+        if (decimal < 10) { decimal = "0" + decimal }
+
+        return "R$ " + integer + "," + decimal
     }
 
     render() {

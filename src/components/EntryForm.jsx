@@ -1,5 +1,4 @@
 import { Component } from "react";
-import "./EntryForm.css"
 import NumberFormat from 'react-number-format'
 
 class EntryForm extends Component {
@@ -17,10 +16,10 @@ class EntryForm extends Component {
         this.setState({...this.state, isATransfer: event.target.checked});
     }
 
-    _handleValueChange(event) {
-        event.stopPropagation()
-        console.log(event.target.value)
-        this.setState({...this.state, valueInput: "R$ " + event.target.value})
+    _addEntry(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.props.addEntry()
     }
 
     render() {
@@ -63,7 +62,9 @@ class EntryForm extends Component {
         }
 
         return (
-            <form>
+            <form
+                onSubmit={this._addEntry.bind(this)}
+            >
                 <div>
                     Data: <input type="date"/>
                 </div>
@@ -107,9 +108,14 @@ class EntryForm extends Component {
                         fixedDecimalScale={true}
                         allowNegative={true}
                         allowEmptyFormatting={true}
-                        prefix={'R$'}
+                        prefix={'R$ '}
                         defaultValue={'0'}
                     />
+                </div>
+                <div>
+                    <button>
+                        Create entry
+                    </button>
                 </div>
             </form>
         )

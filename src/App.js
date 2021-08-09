@@ -15,8 +15,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let entryListDAO = new EntryDAO()
-    entryListDAO.getAll().then(entryList => {
+    let entryDAO = new EntryDAO(this.entries)
+    entryDAO.getAll().then(entryList => {
       console.log("Entry result:")
       console.log(entryList)
       this.setState({...this.state, entries: entryList})
@@ -30,11 +30,23 @@ class App extends Component {
     })
   }
 
+  _addEntry() {
+    let new_entry = {'entry_id' : 2, 'account': 2, 'date': "12/08/2021", 'value': "300"}
+    let new_state_entries = [...this.state.entries, new_entry]
+    this.setState({...this.state, entries: new_state_entries})
+  }
+
   render() {
     return (
       <section className="conteudo">
-        <EntryForm accounts={this.state.accounts}/>
-        <EntryTable accounts={this.state.accounts} entries={this.state.entries} />
+        <EntryForm
+          accounts={this.state.accounts}
+          addEntry={this._addEntry.bind(this)}
+        />
+        <EntryTable
+          accounts={this.state.accounts}
+          entries={this.state.entries}
+        />
       </section>
     );
   }
