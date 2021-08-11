@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let entryDAO = new EntryDAO(this.entries)
+    let entryDAO = new EntryDAO()
     entryDAO.getAll().then(entryList => {
       console.log("Entry result:")
       console.log(entryList)
@@ -32,8 +32,15 @@ class App extends Component {
 
   _addEntry() {
     let new_entry = {'entry_id' : 2, 'account': 2, 'date': "12/08/2021", 'value': "300"}
-    let new_state_entries = [...this.state.entries, new_entry]
-    this.setState({...this.state, entries: new_state_entries})
+
+    let entryDAO = new EntryDAO()
+    entryDAO.add(new_entry).then(added_entry => {
+      console.log("Add entry result:")
+      console.log(added_entry)
+
+      let new_state_entries = [...this.state.entries, added_entry]
+      this.setState({...this.state, entries: new_state_entries})
+    })
   }
 
   render() {
