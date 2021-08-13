@@ -17,10 +17,10 @@ class Entry extends Component {
                 <td>{ this.props.entry['category'] }</td>
                 <td>{ this.props.entry['description'] }</td>
                 {this.props.accounts.map(account => {
-                    if (account['id'] === this.props.entry['account']) {
-                        return (<td key={this.props.entry['entry_id'] + account['id']}>{this._getFormattedValue(this.props.entry['value'])}</td>)
+                    if (account['account_id'] === this.props.entry['account_id']) {
+                        return (<td key={this.props.entry['entry_id'] + account['account_id']}>{this._getFormattedValue(this.props.entry['value'])}</td>)
                     } else {
-                        return (<td key={this.props.entry['entry_id'] + account['id']}></td>)
+                        return (<td key={this.props.entry['entry_id'] + account['account_id']}></td>)
                     }
                 })}
             </tr>

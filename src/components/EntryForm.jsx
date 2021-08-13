@@ -30,7 +30,7 @@ class EntryForm extends Component {
                     <div>Conta de origem:
                         <select>
                             {this.props.accounts.map(account => 
-                                <option key={account['id']}>
+                                <option key={account['account_id']}>
                                     {account['name']}
                                 </option>
                             )}
@@ -39,7 +39,7 @@ class EntryForm extends Component {
                     <div>Conta de destino: 
                         <select>
                             {this.props.accounts.map(account => 
-                                <option key={account['id']}>
+                                <option key={account['account_id']}>
                                     {account['name']}
                                 </option>
                             )}
@@ -52,7 +52,7 @@ class EntryForm extends Component {
                     <div>Conta: 
                         <select>
                             {this.props.accounts.map(account => 
-                                <option key={account['id']}>
+                                <option key={account['account_id']}>
                                     {account['name']}
                                 </option>
                             )}

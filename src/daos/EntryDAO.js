@@ -9,20 +9,16 @@ export default class EntryDAO {
         return entries['entries'].map(entry => this.jsonToObject(entry));
     }
 
-    async add(entry_id, account, date, seq, category, value, description, commentary) {
-        let newEntry = new Entry(entry_id, account, date, seq, category, value, description, commentary)
-
+    async add(entry) {
         let apiConnection = new APIConnection();
-        newEntry = await apiConnection.createEntry(newEntry)
-        // newEntry = new Entry(entry_id, account, date, seq, category, value, description, commentary);
-
-        return newEntry
+        let createdEntry = await apiConnection.createEntry(entry)
+        return createdEntry
     }
 
     jsonToObject(entry) {
         return new Entry(
             entry['entry_id'],
-            entry['account'],
+            entry['account_id'],
             entry['date'],
             entry['seq'],
             entry['category'],

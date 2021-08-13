@@ -10,7 +10,7 @@ export default class AccountDAO {
 
     jsonToObject(account) {
         return new Account(
-            account['id'],
+            account['account_id'],
             account['name'],
             account['type'],
             account['color']

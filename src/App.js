@@ -4,6 +4,8 @@ import EntryTable from "./components/EntryTable"
 import AccountDAO from './daos/AccountDAO';
 import EntryDAO from './daos/EntryDAO';
 
+import Entry from './models/Entry';
+
 class App extends Component {
   constructor() {
     super()
@@ -31,13 +33,10 @@ class App extends Component {
   }
 
   _addEntry() {
-    let new_entry = {'entry_id' : 2, 'account': 2, 'date': "12/08/2021", 'value': "300"}
+    let new_entry = new Entry(2, 2, "12/08/2021", 0, "YIELD", "500")
 
     let entryDAO = new EntryDAO()
     entryDAO.add(new_entry).then(added_entry => {
-      console.log("Add entry result:")
-      console.log(added_entry)
-
       let new_state_entries = [...this.state.entries, added_entry]
       this.setState({...this.state, entries: new_state_entries})
     })
