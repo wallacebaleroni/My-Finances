@@ -18,7 +18,7 @@ export default class EntryDAO {
     jsonToObject(entry) {
         return new Entry(
             entry['entry_id'],
-            entry['account_id'],
+            entry['origin_account_id'],
             entry['date'],
             entry['seq'],
             entry['category'],
